@@ -1,0 +1,11 @@
+version: '3'
+services:
+    redis:
+        image: redis:latest
+    ngx:
+        build: .
+        ports:
+            - "5432:5432"
+    healthchecker:
+        build: .
+        command: [/usr/local/src/ngx_mruby/mruby/bin/mruby, healthcheck.rb]

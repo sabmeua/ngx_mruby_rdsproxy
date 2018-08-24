@@ -1,0 +1,18 @@
+{
+  "backup": [
+    {
+      "name" : "master",
+      "endpoint" : "db-master:5432"
+    }
+  ], 
+  "upstream" : [
+    {
+      "name" : "read-replica-01",
+      "endpoint" : "read-replica-01:5432"
+    },
+    {
+      "name" : "read-replica-02",
+      "endpoint" : "read-replica-02:5432"
+    }
+  ]
+}
