@@ -59,7 +59,6 @@ MRuby::Build.new('host') do |conf|
   # conf.gem :github => 'matsumotory/mruby-capability'
   # conf.gem :github => 'matsumotory/mruby-cgroup'
 
-  conf.gem :github => 'mattn/mruby-thread'
   conf.gem :github => 'mattn/mruby-json'
   conf.gem :github => 'sabmeua/mruby-aws-cloudwatch'
   conf.gem :github => 'iij/mruby-socket'
