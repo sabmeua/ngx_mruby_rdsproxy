@@ -33,7 +33,11 @@ loop do
       metrics.each do |e|
         servers[e['Label']]['lag'] = e['Values'].first
       end
-      redis.set 'upstreams', JSON::stringify(servers.select{|k,h| h['lag'] < 30}.values.map{|e| e['endpoint']}) 
+      redis.set 'upstreams', JSON::stringify(servers.select{|k,h| h['lag'] < 30}.values.map{ |e|
+        (host,port) =  e['endpoint'].split ':'
+        a = Addrinfo.getaddrinfo(host, port, nil, Socket::SOCK_STREAM, Socket::IPPROTO_TCP)
+        "#{a[0].ip_address}:#{a[0].ip_port}"
+      })
     else
       puts 'Error: Health check failed' 
     end
